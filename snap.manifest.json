@@ -1,10 +1,10 @@
 {
   "version": "0.1.0",
-  "description": "An example Snap written in TypeScript.",
-  "proposedName": "TypeScript Example Snap",
+  "description": "zkvote snap",
+  "proposedName": "zkvote snap",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/p0x-labs/zkVote-snap"
   },
   "source": {
     "shasum": "8Y6pRwIpMz4NqR1jX1Xaj0/hfFOsMj2aU1ZIDgzExVg=",
@@ -12,7 +12,7 @@
       "npm": {
         "filePath": "dist/bundle.js",
         "iconPath": "images/icon.svg",
-        "packageName": "snap",
+        "packageName": "zkvote-snap",
         "registry": "https://registry.npmjs.org/"
       }
     }
