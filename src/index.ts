@@ -10,10 +10,12 @@ import { MerkleProof } from "@zk-kit/incremental-merkle-tree"
 import { default as generateGroupProof} from "../prover/group/proof";
 import { default as generateSignalProof} from "../prover/signal/proof";
 
-const GROUP_ZKEY_FILE = "http://localhost:7070/wasm/group/zkey.16"
-const GROUP_WASM_FILE = "http://localhost:7070/wasm/group/group.wasm"
-const SIGNAL_ZKEY_FILE = "http://localhost:7070/wasm/signal/signal.wasm"
-const SIGNAL_WASM_FILE = "http://localhost:7070/wasm/signal/zkey.16"
+//const FILE_SERVER_RUL = "http://localhost:3000"
+const FILE_SERVER_RUL = "https://vercel-file-server.vercel.app"
+const GROUP_ZKEY_FILE = FILE_SERVER_RUL + "/wasm/group/zkey.16"
+const GROUP_WASM_FILE = FILE_SERVER_RUL + "/wasm/group/group.wasm"
+const SIGNAL_ZKEY_FILE = FILE_SERVER_RUL + "/wasm/signal/signal.wasm"
+const SIGNAL_WASM_FILE = FILE_SERVER_RUL + "/wasm/signal/zkey.16"
 
 /**
  * Get a message from the origin. For demonstration purposes only.

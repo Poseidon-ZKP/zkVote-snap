@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "zkvote snap",
   "proposedName": "zkvote snap",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/p0x-labs/zkVote-snap"
   },
   "source": {
-    "shasum": "8Y6pRwIpMz4NqR1jX1Xaj0/hfFOsMj2aU1ZIDgzExVg=",
+    "shasum": "bY/mel9jcEDNb/fuD0pRXhJJ/M45MvcAQ7UzsJfrqeY=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
