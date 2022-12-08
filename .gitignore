@@ -1,5 +1,4 @@
 .pnp.cjs
 .pnp.loader.mjs
 .yarn/
-dist/
 node_modules/
