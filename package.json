@@ -60,11 +60,13 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@babel/runtime": "^7.20.6",
     "@semaphore-protocol/group": "^2.6.0",
     "@semaphore-protocol/identity": "^2.6.0",
     "@semaphore-protocol/proof": "^2.6.0",
     "@zk-kit/incremental-merkle-tree": "^1.0.0",
     "atob": "^2.1.2",
+    "big-integer": "^1.6.51",
     "circomlibjs-0-0-8": "npm:circomlibjs@0.0.8",
     "ethers": "^5.7.2",
     "log4js": "^6.7.0",
