@@ -1,4 +1,5 @@
-var snarkjs = require('snarkjs');
+//var snarkjs = require('snarkjs');
+import * as snarkjs from "snarkjs"
 
 import { Identity } from "@semaphore-protocol/identity"
 import { MerkleProof } from "@zk-kit/incremental-merkle-tree"
@@ -6,11 +7,6 @@ var circom_0_0_8 = require("circomlibjs-0-0-8")
 const poseidon = circom_0_0_8.poseidon
 import { BigNumberish } from "ethers"
 import { Proof } from "@semaphore-protocol/proof"
-
-import log4js from "log4js"
-export const logger = log4js.getLogger();
-logger.level = "debug";
-logger.debug("log4js level debug");
 
 export declare type FullProof = {
     proof: Proof;
@@ -23,15 +19,12 @@ export declare type PublicSignals = {
 
 export default async function generateProof(
     identity: Identity,
-    //group: Group,
     merkleProof: MerkleProof,
     rand : bigint,
     wasmFile : string,
     zkeyFile : string
 ): Promise<FullProof> {
     console.log(new Date().toUTCString() + " generateProof...")
-    const commitment = identity.getCommitment()
-    //const merkleProof: MerkleProof = group.generateProofOfMembership(group.indexOf(commitment))
 
     console.log("rand : ", rand)
     const rc = poseidon([rand, identity.getNullifier()])
@@ -46,8 +39,7 @@ export default async function generateProof(
             r : rand
         },
         wasmFile,
-        zkeyFile,
-        logger
+        zkeyFile
     )
 
     console.log("original publicSignals : ", publicSignals)

@@ -11,7 +11,10 @@ async function fix() {
 	contents = contents.replace(new RegExp(" throw new Error\\(\"The tree depth must be between 16 and 32\"\\)", "g"), "// ")
 	contents = contents.replace(new RegExp("if \\(singleThread", "g"),  "if (true")
 	contents = contents.replace(new RegExp("ffjavascript.buildBn128\\(", "g"),  "ffjavascript.buildBn128(true")
+	contents = contents.replace(new RegExp("var Worker", "g"), "// var Worker")
+	contents = contents.replace(new RegExp("if \\(typeof globalThis.crypto", "g"), "if (false) { //")
 	// contents = contents.replace(new RegExp("textData = atob\\(textData", "g"), "// textData = atob(textData")
+	contents = contents.replace(new RegExp("Buffer = window.Buffer;", "g"),  "Buffer = window.Buffer;console.log(\"Buffer = window.Buffer\");")
   await fs.writeFile(bundlePath, contents);
 }
 

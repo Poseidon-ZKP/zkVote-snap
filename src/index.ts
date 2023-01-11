@@ -1,16 +1,13 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
 import { BigNumber, ethers } from 'ethers';
 import { Identity } from "@semaphore-protocol/identity"
-var snarkjs = require('snarkjs');
-var circom_0_0_8 = require("circomlibjs-0-0-8")
-const poseidon = circom_0_0_8.poseidon
+import { poseidon } from 'circomlibjs-0-0-8';
 import { Group } from "@semaphore-protocol/group"
 
 import { MerkleProof } from "@zk-kit/incremental-merkle-tree"
 import { default as generateGroupProof} from "../prover/group/proof";
 import { default as generateSignalProof} from "../prover/signal/proof";
 
-//const FILE_SERVER_RUL = "http://localhost:3000"
 const FILE_SERVER_RUL = "https://vercel-file-server.vercel.app"
 const GROUP_ZKEY_FILE = FILE_SERVER_RUL + "/wasm/group/zkey.16"
 const GROUP_WASM_FILE = FILE_SERVER_RUL + "/wasm/group/group.wasm"
@@ -26,7 +23,7 @@ const SIGNAL_WASM_FILE = FILE_SERVER_RUL + "/wasm/signal/zkey.16"
 export const getMessage = (originString: string): string =>
   `Hello, ${originString}!`;
 
-async function getSeed() {
+async function getSeed() : Promise<string> {
   const keys = await wallet.request({
     method: 'snap_manageState',
     params: ['get'],
