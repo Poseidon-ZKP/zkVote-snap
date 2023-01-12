@@ -18,8 +18,10 @@
     "snap.manifest.json"
   ],
   "scripts": {
-    "build": "npm run build:snap && npm run build:fix-bundle && npm run build:eval && cp snap.manifest.json dist/",
+    "build-webpack": "webpack && mm-snap manifest --fix",
+    "build": "npm run build:snap && npm run build:fix-bundle && npm run build:eval && npm run build-webpack && cp snap.manifest.json dist/",
     "build:fix-bundle": "node ./scripts/fix-bundle.js && mm-snap manifest --fix",
+    "build:fix-manifest": "mm-snap manifest --fix",
     "build:eval": "mm-snap eval --verboseErrors",
     "build:snap": "mm-snap build --verboseErrors --eval=false",
     "start": "mm-snap serve"
@@ -45,7 +47,8 @@
     "prettier": "^2.2.1",
     "prettier-plugin-packagejson": "^2.2.11",
     "rimraf": "^3.0.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "webpack-cli": "^5.0.1"
   },
   "packageManager": "npm@3.2.1",
   "engines": {
@@ -56,7 +59,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@babel/register": "^7.18.9",
     "@babel/runtime": "^7.20.6",
+    "@metamask/snaps-webpack-plugin": "^0.27.1",
     "@semaphore-protocol/group": "^2.6.0",
     "@semaphore-protocol/identity": "^2.6.0",
     "@semaphore-protocol/proof": "^2.6.0",
@@ -65,7 +70,11 @@
     "big-integer": "^1.6.51",
     "circomlibjs-0-0-8": "npm:circomlibjs@0.0.8",
     "ethers": "^5.7.2",
+    "html-webpack-plugin": "^5.5.0",
     "log4js": "^6.7.0",
-    "snarkjs": "^0.5.0"
+    "snarkjs": "^0.5.0",
+    "webpack": "^5.75.0",
+    "webpack-merge": "^5.8.0",
+    "webpackbar": "^5.0.2"
   }
 }

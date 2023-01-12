@@ -14,15 +14,6 @@ const GROUP_WASM_FILE = FILE_SERVER_RUL + "/wasm/group/group.wasm"
 const SIGNAL_ZKEY_FILE = FILE_SERVER_RUL + "/wasm/signal/signal.wasm"
 const SIGNAL_WASM_FILE = FILE_SERVER_RUL + "/wasm/signal/zkey.16"
 
-/**
- * Get a message from the origin. For demonstration purposes only.
- *
- * @param originString - The origin string.
- * @returns A message based on the origin.
- */
-export const getMessage = (originString: string): string =>
-  `Hello, ${originString}!`;
-
 async function getSeed() : Promise<string> {
   const keys = await wallet.request({
     method: 'snap_manageState',
