@@ -15,7 +15,7 @@ const SIGNAL_ZKEY_FILE = FILE_SERVER_RUL + "/wasm/signal/signal.wasm"
 const SIGNAL_WASM_FILE = FILE_SERVER_RUL + "/wasm/signal/zkey.16"
 
 async function getSeed() : Promise<string> {
-  const keys = await wallet.request({
+  const keys = await snap.request({
     method: 'snap_manageState',
     params: ['get'],
   });
@@ -37,7 +37,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   switch (request.method) {
     case 'show_msg': {
       const params  = request.params as string[]
-      return await wallet.request({
+      return await snap.request({
         method: 'snap_confirm',
         params: [
           {
@@ -54,14 +54,14 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       const seed = params[0]
       console.log("snap : update_priv_seed to ", seed)
 
-      return await wallet.request({
+      return await snap.request({
         method: 'snap_manageState',
         params: ['update', { MANTA_VOTE_SEED: seed }],
       });
     }
   
     case 'get_key': {
-      return await wallet.request({
+      return await snap.request({
         method: 'snap_manageState',
         params: ['get'],
       });
@@ -71,7 +71,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     }
 
     case 'get_bip44' : {
-      const ethNode = await wallet.request({
+      const ethNode = await snap.request({
         method: 'snap_getBip44Entropy',
         params: {
           coinType: 60,
