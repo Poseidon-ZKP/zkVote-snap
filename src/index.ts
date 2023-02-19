@@ -17,7 +17,9 @@ const SIGNAL_WASM_FILE = FILE_SERVER_RUL + "/wasm/signal/zkey.16"
 async function getSeed() : Promise<string> {
   const keys = await snap.request({
     method: 'snap_manageState',
-    params: ['get'],
+    params: {
+      operation : 'get',
+    }
   });
   return keys.MANTA_VOTE_SEED
 }
@@ -38,15 +40,14 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'show_msg': {
       const params  = request.params as string[]
       return await snap.request({
-        method: 'snap_confirm',
-        params: [
+        method: 'snap_notify',
+        params:
           {
             prompt: origin,
             description:
               'This custom confirmation is just for display purposes.',
             textAreaContent: params[0],
           },
-        ],
       });
     }
     case 'update_priv_seed': {
@@ -54,16 +55,23 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       const seed = params[0]
       console.log("snap : update_priv_seed to ", seed)
 
-      return await snap.request({
+      const res = await snap.request({
         method: 'snap_manageState',
-        params: ['update', { MANTA_VOTE_SEED: seed }],
+        params: {
+          operation : 'update',
+          newState : { MANTA_VOTE_SEED: seed}
+        },
       });
+      console.log("res v2 : ", res)
+      return res
     }
   
     case 'get_key': {
       return await snap.request({
         method: 'snap_manageState',
-        params: ['get'],
+        params: {
+          operation : 'get',
+        }
       });
     }
     case 'get_seed': {
