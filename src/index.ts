@@ -1,4 +1,5 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
+import { panel, text } from '@metamask/snaps-ui';
 import { BigNumber, ethers } from 'ethers';
 import { Identity } from "@semaphore-protocol/identity"
 import { poseidon } from 'circomlibjs-0-0-8';
@@ -40,13 +41,14 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'show_msg': {
       const params  = request.params as string[]
       return await snap.request({
-        method: 'snap_notify',
-        params:
-          {
-            prompt: origin,
-            description:
-              'This custom confirmation is just for display purposes.',
-            textAreaContent: params[0],
+        method: 'snap_dialog',
+        params: {
+            type: 'Confirmation',
+            content: panel([
+              text(`Hello, **${origin}**!`),
+              text('This custom confirmation is just for display purposes.'),
+              text(params[0])
+            ]),
           },
       });
     }

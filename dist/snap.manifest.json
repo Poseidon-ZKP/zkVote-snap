@@ -1,5 +1,5 @@
 {
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "zkvote snap",
   "proposedName": "zkvote snap",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/p0x-labs/zkVote-snap"
   },
   "source": {
-    "shasum": "DH2iqKyCjBXh6svLSdU1MMIThdVK1evqoANQuJzTp8Y=",
+    "shasum": "DqDQUjvHo7mXcQz9HaTXkQ1VwHqtB9EJn0X2YV/6ULQ=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -18,7 +18,7 @@
     }
   },
   "initialPermissions": {
-    "snap_confirm": {},
+    "snap_dialog": {},
     "endowment:rpc": {
       "dapps": true,
       "snaps": true
